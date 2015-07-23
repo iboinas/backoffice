@@ -1,0 +1,13 @@
+{
+    "name": "iboinas/backoffice",
+    "description": "Backoffice with bootstrap for Cartalyst/Sentinel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joao Patricio",
+            "email": "iboinas@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
