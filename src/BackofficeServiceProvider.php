@@ -13,7 +13,16 @@ class BackofficeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $packageFilename = with(new \ReflectionClass('Iboinas\Backoffice\BackofficeServiceProvider'))->getFileName();
+        $packagePath     = dirname($packageFilename);
+
+        // Should we register the default routes?
+        if (config('sentinel.routes_enabled') || 1)
+        {
+            include $packagePath . '/Http/routes.php';
+        }
+
+
     }
 
     /**
