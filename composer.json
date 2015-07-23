@@ -8,6 +8,11 @@
             "email": "iboinas@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Iboinas\\Backoffice\\": "src/"
+        }
+    },
     "minimum-stability": "dev",
     "require": {}
 }
