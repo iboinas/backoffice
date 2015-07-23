@@ -1,18 +1,44 @@
 {
     "name": "iboinas/backoffice",
-    "description": "Backoffice with bootstrap for Cartalyst/Sentinel",
+    "description": ":package_description",
+    "keywords": [
+        "league",
+        ":package_name"
+    ],
+    "homepage": "https://github.com/thephpiboinas/backoffice",
     "license": "MIT",
     "authors": [
         {
-            "name": "Joao Patricio",
-            "email": "iboinas@gmail.com"
+            "name": ":author_name",
+            "email": ":author_email",
+            "homepage": ":author_website",
+            "role": "Developer"
         }
     ],
+    "require": {
+        "illuminate/support": "~5.1",
+        "php" : ">=5.3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*",
+        "scrutinizer/ocular": "~1.1"
+    },
     "autoload": {
         "psr-4": {
-            "Iboinas\\Backoffice\\": "src/"
+            "Iboinas\\Backoffice\\": "src"
         }
     },
-    "minimum-stability": "dev",
-    "require": {}
+    "autoload-dev": {
+        "psr-4": {
+            "Iboinas\\Backoffice\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
 }
