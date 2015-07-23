@@ -1,18 +1,12 @@
 {
     "name": "iboinas/backoffice",
-    "description": ":package_description",
-    "keywords": [
-        "league",
-        ":package_name"
-    ],
+    "description": "Backoffice with bootstrap for Cartalyst/Sentinel",
     "homepage": "https://github.com/thephpiboinas/backoffice",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": ":author_website",
-            "role": "Developer"
+            "name": "Joao Patricio",
+            "email": "iboinas@gmail.com"
         }
     ],
     "require": {
