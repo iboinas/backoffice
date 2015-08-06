@@ -14,10 +14,31 @@ PSRs you support to avoid any confusion with users and contributors.
 
 ## Install
 
-Via Composer
+This package integrates with Cartalyst\Sentinel v2
+
+config/app.php
+``` php
+/**
+ * Add to Providers section
+ */
+ 
+ Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
+ Iboinas\Backoffice\BackofficeServiceProvider::class,
+ 
+ /**
+ * Add to Aliases section
+ */
+ 
+'Activation' => Cartalyst\Sentinel\Laravel\Facades\Activation::class,
+'Reminder'   => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
+'Sentinel'   => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
+ 
+```
+
+Run in your project rooot
 
 ``` bash
-$ composer require league/:package_name
+$ php artisan vendor:publish --provider="Cartalyst\Sentinel\Laravel\SentinelServiceProvider"
 ```
 
 ## Usage
