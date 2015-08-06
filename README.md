@@ -1,4 +1,4 @@
-# :package_name
+# Iboinas\Backoffice
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
@@ -44,8 +44,9 @@ $ php artisan vendor:publish --provider="Cartalyst\Sentinel\Laravel\SentinelServ
 ## Usage
 
 ``` php
-$skeleton = new League\Skeleton();
-echo $skeleton->echoPhrase('Hello, League!');
+
+Navigate to yourproject.url/backoffice
+
 ```
 
 ## Change log
