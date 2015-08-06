@@ -35,6 +35,16 @@ config/app.php
  
 ```
 
+app/Http/Kernel.php
+``` php
+/**
+ * add to $routeMiddleware
+ */
+ 
+ 'sentinel.anyaccess' => \Iboinas\Backoffice\Http\Middleware\SentinelHasAnyAccess::class
+ 
+```
+
 Run in your project rooot
 
 ``` bash
