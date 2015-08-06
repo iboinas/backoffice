@@ -41,7 +41,7 @@ app/Http/Kernel.php
  * add to $routeMiddleware
  */
  
- 'sentinel.anyaccess' => \Iboinas\Backoffice\Http\Middleware\SentinelHasAnyAccess::class
+ 'backoffice.anyaccess' => \Iboinas\Backoffice\Http\Middleware\SentinelHasAnyAccess::class
  
 ```
 
