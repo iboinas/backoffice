@@ -23,6 +23,12 @@ class BackofficeServiceProvider extends ServiceProvider
         }
 
 
+
+
+        $this->loadViewsFrom($packagePath.'/views', 'Backoffice');
+
+
+
     }
 
     /**
