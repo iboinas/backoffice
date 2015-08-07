@@ -1,6 +1,7 @@
-# Backoffice
+# Iboinas\Backoffice
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
+[![Latest Version on Packagist][ico-version]][li
+nk-packagist]
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status][ico-travis]][link-travis]
 [![Coverage Status][ico-scrutinizer]][link-scrutinizer]
@@ -14,17 +15,49 @@ PSRs you support to avoid any confusion with users and contributors.
 
 ## Install
 
-Via Composer
+This package integrates with Cartalyst\Sentinel v2
+
+config/app.php
+``` php
+/**
+ * Add to Providers section
+ */
+ 
+ Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
+ Iboinas\Backoffice\BackofficeServiceProvider::class,
+ 
+ /**
+ * Add to Aliases section
+ */
+ 
+'Activation' => Cartalyst\Sentinel\Laravel\Facades\Activation::class,
+'Reminder'   => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
+'Sentinel'   => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
+ 
+```
+
+app/Http/Kernel.php
+``` php
+/**
+ * add to $routeMiddleware
+ */
+ 
+ 'backoffice.anyaccess' => \Iboinas\Backoffice\Http\Middleware\SentinelHasAnyAccess::class
+ 
+```
+
+Run in your project rooot
 
 ``` bash
-$ composer require league/:package_name
+$ php artisan vendor:publish --provider="Cartalyst\Sentinel\Laravel\SentinelServiceProvider"
 ```
 
 ## Usage
 
 ``` php
-$skeleton = new League\Skeleton();
-echo $skeleton->echoPhrase('Hello, League!');
+
+Navigate to yourproject.url/backoffice
+
 ```
 
 ## Change log
