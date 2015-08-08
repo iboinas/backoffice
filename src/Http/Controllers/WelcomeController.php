@@ -28,9 +28,12 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        if ( !\Sentinel::check() ) return redirect(route('backoffice.login'));
+
+        if ( !Sentinel::check() ) return redirect(route('backoffice.login'));
 
         else return redirect(route('backoffice.welcome'));
+
+
     }
 
 
