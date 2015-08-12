@@ -21,7 +21,7 @@ class SentinelHasAnyAccess
         $permissions = explode('|',$permissions);
 
         // Check if the user has access to one of the permissions in the array
-        if (!Sentinel::getUser()->hasAnyAccess($permissions)) {
+        if (!Sentinel::hasAnyAccess($permissions)) {
 
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);

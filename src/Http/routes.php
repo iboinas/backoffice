@@ -23,10 +23,14 @@ Route::group( [ 'prefix' => 'backoffice' , 'namespace' => 'Iboinas\Backoffice\Ht
     Route::post('login', [ 'as' => 'backoffice.authenticate', 'uses' => 'Authority\AuthoritySessionController@authenticate']  );
     Route::get('logout', [ 'as' => 'backoffice.logout' , 'uses' => 'Authority\AuthoritySessionController@logout' ] );
 
-    Route::resource('role','RoleController');
-    Route::any('role/{id}/permission/{action}/{permission?}', [ 'as' => 'backoffice.role.permission.manage', 'uses' => 'RoleController@managePermissions']  );
+    Route::resource('roles','Roles\RoleController');
+    Route::any('roles/{id}/permission/{action}/{permission?}', [ 'as' => 'backoffice.role.permission.manage', 'uses' => 'Roles\RoleController@managePermissions']  );
 
-    Route::resource('user','UserController');
+
+
+    Route::resource('users','Users\UserController');
+    Route::any('role/{id}/permission/{action}/{permission?}', [ 'as' => 'backoffice.users.permission.manage', 'uses' => 'Users\UserController@managePermissions']  );
+
 
 });
 

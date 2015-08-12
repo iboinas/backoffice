@@ -55,8 +55,8 @@
 	        <div class="collapse navbar-collapse">
 	          <ul class="nav navbar-nav">
 				@if ( Sentinel::check() && Sentinel::getUser()->hasAccess('superuser'))
-					<li {{ (Request::is('backoffice/users*') ? 'class=active' : '') }}><a href="{!! route('backoffice.user.index') !!}">Users</a></li>
-					<li {{ (Request::is('backoffice/role*') ? 'class=active' : '' ) }}><a href="{!! route('backoffice.role.index') !!}">Roles</a></li>
+					<li {{ (Request::is('backoffice/user*') ? 'class=active' : '') }}><a href="{!! route('backoffice.users.index') !!}">Users</a></li>
+					<li {{ (Request::is('backoffice/role*') ? 'class=active' : '' ) }}><a href="{!! route('backoffice.roles.index') !!}">Roles</a></li>
 				@endif
 	          </ul>
 	          <ul class="nav navbar-nav navbar-right">

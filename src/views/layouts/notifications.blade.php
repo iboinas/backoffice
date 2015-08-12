@@ -1,13 +1,10 @@
 <div id="message_holder">
 
   @if (Session::has('error'))
-
-    @foreach(Session::get('error') as $error)
       <div class="alert alert-danger">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <p>{{ $error }}</p>
+        <p>{{ Session::get('error') }}</p>
       </div>
-    @endforeach
   @endif
 
   @if (Session::has('errors'))

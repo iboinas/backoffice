@@ -1,17 +1,17 @@
 <?php
 
-namespace Iboinas\Backoffice\Http\Controllers;
+namespace Iboinas\Backoffice\Http\Controllers\Users;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use \Sentinel;
 use \Iboinas\Backoffice\Http\Requests\Roles\RolePermissionManageRequest;
+use Iboinas\Backoffice\Http\Requests\Users\StoreUserRequest;
+use \Sentinel, \Input;
 
 
-
-class RoleController extends Controller
+class UserController extends Controller
 {
 
     public function __construct( )
@@ -28,9 +28,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Sentinel::getRoleRepository()->all();
+        $users = Sentinel::getUserRepository()->all();
 
-        return view('Backoffice::roles.index')->with('roles',$roles);
+        return view('Backoffice::users.index')->with('users',$users);
     }
 
     /**
@@ -40,7 +40,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('Backoffice::users.create');
     }
 
     /**
@@ -49,9 +49,20 @@ class RoleController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        //
+        $save = Sentinel::registerAndActivate(Input::all());
+
+        if($save)
+        {
+            \Session::flash('message','Successfully added!');
+            return redirect(route('backoffice.users.index'));
+        }
+        else
+        {
+            \Session::flash('error','Error while saving!');
+            return back();
+        }
     }
 
     /**
@@ -62,8 +73,8 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        $role = Sentinel::getRoleRepository()->findById($id);
-        return view('Backoffice::roles.show')->with('role',$role);
+        $user = Sentinel::findById($id);
+        return view('Backoffice::users.show')->with('user',$user);
     }
 
     /**
@@ -107,23 +118,29 @@ class RoleController extends Controller
         switch ($action){
 
             case 'add':
-                $role = Sentinel::findRoleById($id);
-                $sucess = $role->updatePermission( \Input::get('name') , \Input::get('permission_type'), true)->save();
+                if (\Input::get('permission_type') == 'true') $perm_type = true;
+                    else $perm_type = false;
+                $role = Sentinel::findById($id);
+                $sucess = $role->updatePermission( \Input::get('name'), $perm_type, true)->save();
+                $message = 'Permission added sucessfully!';
                 break;
 
             case 'true':
-                $role = Sentinel::findRoleById($id);
-                $sucess = $role->updatePermission( $permission , 'true' , true)->save();
+                $role = Sentinel::findById($id);
+                $sucess = $role->updatePermission( $permission , true , true)->save();
+                $message = 'Permission TRUE applied sucessfully!';
                 break;
 
             case 'false':
-                $role = Sentinel::findRoleById($id);
-                $sucess = $role->updatePermission( $permission , 'false' , true)->save();
+                $role = Sentinel::findById($id);
+                $sucess = $role->updatePermission( $permission , false , true)->save();
+                $message = 'Permission FALSE applied sucessfully!';
                 break;
 
             case 'delete':
-                $role = Sentinel::findRoleById($id);
+                $role = Sentinel::findById($id);
                 $sucess = $role->removePermission($permission)->save();
+                $message = 'Permission deleted sucessfully!';
                 break;
 
             default:
@@ -132,7 +149,7 @@ class RoleController extends Controller
 
         if ($sucess)
         {
-            \Session::flash('message','Permission added sucessfully!');
+            \Session::flash('message', $message);
             return back();
         }
 

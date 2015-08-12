@@ -2,7 +2,7 @@
 
 {{-- Web site Title --}}
 @section('title')
-    Roles
+    Users
 @stop
 
 {{-- Content --}}
@@ -20,15 +20,16 @@
 
             <dl class="dl-horizontal">
                 <dt>ID</dt>
-                <dd>{!! $role->id !!}</dd>
-                <dt>Slug</dt>
-                <dd>{!! $role->slug !!}</dd>
+                <dd>{!! $user->id !!}</dd>
                 <dt>Name</dt>
-                <dd>{!! $role->name !!}</dd>
+                <dd>{!! $user->first_name . " " . $user->last_name !!}</dd>
+                <dt>E-mail</dt>
+                <dd>{!! $user->email !!}</dd>
                 <dt>Created at</dt>
-                <dd>{!! $role->created_at !!}</dd>
+                <dd>{!! $user->created_at !!}</dd>
                 <dt>Updated at</dt>
-                <dd>{!! $role->updated_at !!}</dd>
+                <dd>{!! $user->updated_at !!}</dd>
+
             </dl>
 
 
@@ -38,12 +39,12 @@
 
             <h4>  Add Permission </h4>
 
-            <form action="{!! route('backoffice.role.permission.manage',['id'=>$role->id , 'action' => 'add']) !!}"
+            <form action="{!! route('backoffice.users.permission.manage',['id'=>$user->id , 'action' => 'add']) !!}"
                   method="POST" class="form-horizontal" id="formAddPermission" >
 
                 {!! csrf_field() !!}
 
-                <input type="hidden" name="role_id" value="{!! $role->id !!}" >
+                <input type="hidden" name="role_id" value="{!! $user->id !!}" >
 
                 <div class="form-group">
                     <label for="name" class="col-sm-2 control-label text-right">Permission Name</label>
@@ -90,7 +91,7 @@
             <br><br><br>
 
 
-            <h4 style="width: 160px; text-align: right;"> Permissions </h4>
+            <h4> Individual Permissions </h4>
 
 
             <div class="row">
@@ -102,7 +103,7 @@
                             <th> Allow </th>
                             <th> Action </th>
                         </tr>
-                        @forelse($role->permissions as $key => $value)
+                        @forelse($user->permissions as $key => $value)
                             <tr>
 
                                 <?php ($value == true) ? $class = "success" : $class = "danger" ?>
@@ -113,12 +114,12 @@
 
                                 <td align="right">
                                     @if($value != true)
-                                    <a href="{!! route('backoffice.role.permission.manage',['id'=>$role->id , 'action' => 'true', 'permission' => $key ]) !!}" class="btn btn-success">Change to True</a>
+                                    <a href="{!! route('backoffice.users.permission.manage',['id'=>$user->id , 'action' => 'true', 'permission' => $key ]) !!}" class="btn btn-success">Change to True</a>
                                     @endif
                                     @if($value != false)
-                                    <a href="{!! route('backoffice.role.permission.manage',['id'=>$role->id , 'action' => 'false', 'permission' => $key ]) !!}" class="btn btn-warning">Change to False</a>
+                                    <a href="{!! route('backoffice.users.permission.manage',['id'=>$user->id , 'action' => 'false', 'permission' => $key ]) !!}" class="btn btn-warning">Change to False</a>
                                     @endif
-                                    <a href="{!! route('backoffice.role.permission.manage',['id'=>$role->id , 'action' => 'delete', 'permission' => $key ]) !!}" class="btn btn-danger">Delete</a>
+                                    <a href="{!! route('backoffice.users.permission.manage',['id'=>$user->id , 'action' => 'delete', 'permission' => $key ]) !!}" class="btn btn-danger">Delete</a>
                                 </td>
 
                             </tr>
