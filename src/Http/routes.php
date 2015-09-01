@@ -29,8 +29,8 @@ Route::group( [ 'prefix' => 'backoffice' , 'namespace' => 'Iboinas\Backoffice\Ht
 
 
     Route::resource('users','Users\UserController');
-    Route::any('role/{id}/permission/{action}/{permission?}', [ 'as' => 'backoffice.users.permission.manage', 'uses' => 'Users\UserController@managePermissions']  );
-
+    Route::any('user/{id}/permission/{action}/{permission?}', [ 'as' => 'backoffice.users.permission.manage', 'uses' => 'Users\UserController@managePermissions']  );
+    Route::post('user/{id}/superlogin', [ 'as' => 'backoffice.users.superlogin', 'uses' => 'Users\UserController@superLogin']  );
 
 });
 

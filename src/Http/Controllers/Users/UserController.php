@@ -162,4 +162,30 @@ class UserController extends Controller
 
 
     }
+
+
+    public function superLogin( $id )
+    {
+        if (Sentinel::hasAnyAccess('superuser'))
+        {
+            $user = Sentinel::findById($id);
+            if ($user) Sentinel::logout();
+            $success =  Sentinel::login($user);
+        }
+
+        if ($success)
+        {
+            \Session::flash('message', 'Success!');
+            return redirect('/');
+        }
+
+        else
+        {
+            \Session::flash('notice','Error!');
+            return back();
+        }
+
+
+
+    }
 }

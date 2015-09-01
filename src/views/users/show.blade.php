@@ -33,6 +33,14 @@
             </dl>
 
 
+            <br>
+
+            <form action="{!! route('backoffice.users.superlogin',['id'=>$user->id]) !!}" method="POST" onsubmit="return confirm('Are you sure you want to login this user?');">
+                {!! csrf_field() !!}
+                <button type="submit" class="btn btn-default" id="submitAddPermission">Login as this user!</button>
+            </form>
+
+
 
             <br><br><br>
 
