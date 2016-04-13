@@ -1,6 +1,8 @@
 # Iboinas\Backoffice
 
-### Still a work in progress. Not much time lately, sorry
+## Still a work in progress. Not much time lately, sorry
+
+### Laravel 5.1 LTS Package for Users Web Interface Admin, on projects combined with [Cartalyst/Sentinel](https://github.com/cartalyst/sentinel) v2.0
 
 **Note:** Replace ```:author_name``` ```:author_username``` ```:author_website``` ```:author_email``` ```:package_name``` ```:package_description``` with their correct values in [README.md](README.md), [CHANGELOG.md](CHANGELOG.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE.md](LICENSE.md) and [composer.json](composer.json) files, then delete this line.
 
